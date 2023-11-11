@@ -22,4 +22,10 @@ public class Menu {
                 .collect(Collectors.toMap(a -> a[0], a -> Integer.parseInt(a[1])));
         return orderedMenu;
     }
+
+    private static void isEmptyMenu(Map<String, Integer> orderedMenu) {
+        if (orderedMenu.size() <= 0) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
 }
