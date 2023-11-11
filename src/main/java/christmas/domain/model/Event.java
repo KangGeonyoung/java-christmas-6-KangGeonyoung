@@ -32,4 +32,17 @@ public class Event {
         return christmasDiscount;
     }
 
+    // 평일 할인
+    public int weekdayEvent(int date, Map<String, Integer> orderedMenu) {
+        if (!Date.isWeekend(date)) {
+            List<String> dessertMenu = new ArrayList<>(List.of("초코케이크", "아이스크림"));
+            orderedMenu.forEach((menu, count) -> {
+                if (dessertMenu.contains(menu)) {
+                    weekdayDiscount += 2023 * count;
+                }
+            });
+        }
+        return weekdayDiscount;
+    }
+
 }
