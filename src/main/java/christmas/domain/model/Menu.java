@@ -14,6 +14,21 @@ public class Menu {
 
     private Map<String, Integer> orderedMenu;
 
+    public void isValidMenu(String input) {
+        try {
+            Map<String, Integer> orderedMenu = convertOrderedMenu(input);
+            isEmptyMenu(orderedMenu);
+            isWithinMenu(orderedMenu);
+            isValidMenuCount(orderedMenu);
+            this.orderedMenu = orderedMenu;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        } catch (IllegalStateException e) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        }
+    }
 
     private static Map<String, Integer> convertOrderedMenu(String input) {
         Map<String, Integer> orderedMenu = Pattern.compile(",")
