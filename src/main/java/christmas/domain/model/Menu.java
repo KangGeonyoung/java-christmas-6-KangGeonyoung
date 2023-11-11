@@ -44,4 +44,8 @@ public class Menu {
             }
         });
     }
+
+    public Map getOrderedMenu() {
+        return orderedMenu;
+    }
 }
