@@ -37,4 +37,11 @@ public class Date {
         }
         return false;
     }
+
+    public static boolean isChristmasDay(int date) {
+        if (date >= 1 && date <= 25) {
+            return true;
+        }
+        return false;
+    }
 }
