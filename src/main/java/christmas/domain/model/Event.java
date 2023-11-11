@@ -66,4 +66,12 @@ public class Event {
         return specialDiscount;
     }
 
+    // 증정 이벤트
+    public int giftEvent() {
+        if (Gift.getGiftCount() == 1) {
+            giftPrice += MenuPrice.valueOf("샴페인").getPrice();
+        }
+        return giftPrice;
+    }
+
 }
