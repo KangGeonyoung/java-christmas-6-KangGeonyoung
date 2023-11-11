@@ -74,4 +74,14 @@ public class Event {
         return giftPrice;
     }
 
+    // 총혜택 금액
+    public int getTotalDiscount() {
+        discountMoney = weekdayDiscount + weekendDiscount + specialDiscount + christmasDiscount;
+        return (discountMoney + giftPrice);
+    }
+
+    // 총할인 금액
+    public static int getDiscount() {
+        return discountMoney;
+    }
 }
