@@ -29,4 +29,12 @@ public class Date {
         }
         return false;
     }
+
+    public static boolean isSpecialDay(int date) {
+        List<Integer> specialDay = new ArrayList<>(List.of(3, 10, 17, 24, 25, 31));
+        if (specialDay.contains(date)) {
+            return true;
+        }
+        return false;
+    }
 }
