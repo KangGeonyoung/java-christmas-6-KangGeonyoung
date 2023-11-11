@@ -58,4 +58,12 @@ public class Event {
         return weekendDiscount;
     }
 
+    // 특별 할인
+    public int specialEvent(int date) {
+        if (Date.isSpecialDay(date)) {
+            specialDiscount += 1000;
+        }
+        return specialDiscount;
+    }
+
 }
