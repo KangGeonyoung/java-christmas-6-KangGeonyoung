@@ -28,4 +28,12 @@ public class Menu {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         }
     }
+
+    private static void isValidMenuCount(Map<String, Integer> orderedMenu) {
+        orderedMenu.forEach((menu, count) -> {
+            if (count < 1) {
+                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            }
+        });
+    }
 }
