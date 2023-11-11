@@ -36,4 +36,12 @@ public class Menu {
             }
         });
     }
+
+    private static void isWithinMenu(Map<String, Integer> orderedMenu) {
+        orderedMenu.forEach((menu, count) -> {
+            if (!saleMenu.contains(menu)) {
+                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            }
+        });
+    }
 }
