@@ -45,4 +45,17 @@ public class Event {
         return weekdayDiscount;
     }
 
+    // 주말 할인
+    public int weekendEvent(int date, Map<String, Integer> orderedMenu) {
+        if (Date.isWeekend(date)) {
+            List<String> mainMenu = new ArrayList<>(List.of("티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타"));
+            orderedMenu.forEach((menu, count) -> {
+                if (mainMenu.contains(menu)) {
+                    weekendDiscount += 2023 * count;
+                }
+            });
+        }
+        return weekendDiscount;
+    }
+
 }
