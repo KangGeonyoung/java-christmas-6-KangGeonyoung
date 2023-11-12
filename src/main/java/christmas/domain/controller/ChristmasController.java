@@ -54,4 +54,9 @@ public class ChristmasController {
         OutputView.printTotalPrice(totalPrice);
         return totalPrice;
     }
+
+    private void printGiftInfo(int totalPrice) {
+        giftSystem.provideGift(totalPrice);
+        OutputView.printGiftCount(giftSystem.getGiftCount());
+    }
 }
