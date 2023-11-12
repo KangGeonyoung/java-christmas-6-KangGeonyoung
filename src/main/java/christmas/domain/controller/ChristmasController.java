@@ -49,4 +49,9 @@ public class ChristmasController {
         OutputView.printMenu(orderedMenu);
     }
 
+    private int printPriceInfo(Map<String, Integer> orderedMenu) {
+        int totalPrice = priceSystem.getTotalPrice(orderedMenu);
+        OutputView.printTotalPrice(totalPrice);
+        return totalPrice;
+    }
 }
