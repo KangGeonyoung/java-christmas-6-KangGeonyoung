@@ -8,6 +8,8 @@ import java.util.Map;
 
 public class ChristmasController {
 
+    private final int EVENT_START_PRICE = 10000;
+
     private Date dateSystem;
     private Menu menuSystem;
     private Event eventSystem;
@@ -31,7 +33,7 @@ public class ChristmasController {
         printUserInput(date, orderedMenu);
         int totalPrice = printPriceInfo(orderedMenu);
         printGiftInfo(totalPrice);
-        if (totalPrice >= 10000) {
+        if (totalPrice >= EVENT_START_PRICE) {
             executeEvent(date, orderedMenu);
         }
         OutputView.printDiscountInfo(eventSystem);
