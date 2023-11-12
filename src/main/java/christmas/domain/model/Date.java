@@ -1,5 +1,7 @@
 package christmas.domain.model;
 
+import christmas.domain.util.ErrorMessage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +14,13 @@ public class Date {
             isValidRange(date);
             return date;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_DATE.getErrorMessage());
         }
     }
 
     private void isValidRange(int date) {
         if (date < 1 || date > 31) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_DATE.getErrorMessage());
         }
     }
 
