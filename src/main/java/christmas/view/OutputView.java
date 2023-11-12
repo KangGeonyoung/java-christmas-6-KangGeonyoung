@@ -39,6 +39,17 @@ public class OutputView {
         System.out.println("없음");
     }
 
+    public static void printAllDiscount(Event event) {
+        System.out.println();
+        System.out.println("<혜택 내역>");
+        printChristmasDiscount(event);
+        printWeekdayDiscount(event);
+        printWeekendDiscount(event);
+        printSpecialDiscount(event);
+        printGiftDiscount(event);
+        printNoDiscount(event);
+    }
+
     public static void printChristmasDiscount(Event event) {
         if (event.getChristmasDiscount() > 0) {
             System.out.println("크리스마스 디데이 할인: " + event.getChristmasDiscount() * (-1) + "원");
