@@ -29,4 +29,14 @@ public class OutputView {
         System.out.println(totalPrice + "원");
     }
 
+    public static void printGiftCount(int giftCount) {
+        System.out.println();
+        System.out.println("<증정 메뉴>");
+        if (giftCount == 1) {
+            System.out.println("샴페인 " + giftCount + "개");
+            return;
+        }
+        System.out.println("없음");
+    }
+
 }
