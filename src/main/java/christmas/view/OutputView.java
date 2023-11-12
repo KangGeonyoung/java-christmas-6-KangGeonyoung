@@ -39,4 +39,39 @@ public class OutputView {
         System.out.println("없음");
     }
 
+    public static void printChristmasDiscount(Event event) {
+        if (event.getChristmasDiscount() > 0) {
+            System.out.println("크리스마스 디데이 할인: " + event.getChristmasDiscount() * (-1) + "원");
+        }
+    }
+
+    public static void printWeekdayDiscount(Event event) {
+        if (event.getWeekdayDiscount() > 0) {
+            System.out.println("평일 할인: " + event.getWeekdayDiscount() * (-1) + "원");
+        }
+    }
+
+    public static void printWeekendDiscount(Event event) {
+        if (event.getWeekendDiscount() > 0) {
+            System.out.println("주말 할인: " + event.getWeekendDiscount() * (-1) + "원");
+        }
+    }
+
+    public static void printSpecialDiscount(Event event) {
+        if (event.getSpecialDiscount() > 0) {
+            System.out.println("특별 할인: " + event.getSpecialDiscount() * (-1) + "원");
+        }
+    }
+
+    public static void printGiftDiscount(Event event) {
+        if (event.getGiftPrice() > 0) {
+            System.out.println("증정 이벤트: " + event.getGiftPrice() * (-1) + "원");
+        }
+    }
+
+    public static void printNoDiscount(Event event) {
+        if (event.getTotalDiscount() == 0) {
+            System.out.println("없음");
+        }
+    }
 }
