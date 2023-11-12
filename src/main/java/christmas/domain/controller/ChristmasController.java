@@ -24,25 +24,24 @@ public class ChristmasController {
         this.badgeSystem = new Badge();
     }
 
-    public void start() {
-        OutputView.printHello();
-
-        int date = dateSystem.isValidDate(InputView.readDate());
-        Map<String, Integer> orderedMenu = menuSystem.isValidMenu(InputView.readMenu());
-
-        OutputView.printDate(date);
-        OutputView.printMenu(orderedMenu);
-
-        int totalPrice = priceSystem.getTotalPrice(orderedMenu);
-        OutputView.printTotalPrice(totalPrice);
-        giftSystem.provideGift(totalPrice);
-        OutputView.printGiftCount(giftSystem.getGiftCount());
-
-        eventSystem.allEvent(date, orderedMenu);
-        OutputView.printAllDiscount(eventSystem);
-        OutputView.printTotalDiscount(eventSystem);
-        OutputView.printPaymentPrice(priceSystem.getPaymentPrice());
-        OutputView.printBadge(badgeSystem.badgeEvent(eventSystem.getTotalDiscount()));
+    private int inputDate() {
+        try {
+            int date = dateSystem.isValidDate(InputView.readDate());
+            return date;
+        } catch (IllegalArgumentException errorMessage) {
+            System.out.println(errorMessage.getMessage());
+            return inputDate();
+        }
     }
 
+    private Map<String, Integer> inputMenu() {
+        try {
+            Map<String, Integer> orderedMenu = menuSystem.isValidMenu(InputView.readMenu());
+            return orderedMenu;
+        } catch (IllegalArgumentException errorMessage) {
+            System.out.println(errorMessage.getMessage());
+            return inputMenu();
+        }
+    }
+    
 }
