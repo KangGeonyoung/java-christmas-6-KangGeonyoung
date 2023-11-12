@@ -20,7 +20,7 @@ public class Price {
         return totalPrice;
     }
 
-    // 결제 금액
+    // 예상 결제 금액
     public int getPaymentPrice() {
         return (totalPrice - Event.getDiscount());
     }
