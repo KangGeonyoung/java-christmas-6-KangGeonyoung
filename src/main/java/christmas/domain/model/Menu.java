@@ -12,15 +12,13 @@ public class Menu {
             "티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타", "초코케이크", "아이스크림",
             "제로콜라", "레드와인", "샴페인"));
 
-    private Map<String, Integer> orderedMenu;
-
-    public void isValidMenu(String input) {
+    public Map<String, Integer> isValidMenu(String input) {
         try {
             Map<String, Integer> orderedMenu = convertOrderedMenu(input);
             isEmptyMenu(orderedMenu);
             isWithinMenu(orderedMenu);
             isValidMenuCount(orderedMenu);
-            this.orderedMenu = orderedMenu;
+            return orderedMenu;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         } catch (IllegalStateException e) {
@@ -58,9 +56,5 @@ public class Menu {
                 throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
             }
         });
-    }
-
-    public Map getOrderedMenu() {
-        return orderedMenu;
     }
 }
