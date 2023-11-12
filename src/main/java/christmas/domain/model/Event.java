@@ -27,7 +27,7 @@ public class Event {
     // 크리스마스 디데이 할인
     public int christmasEvent(int date) {
         if (Date.isChristmasDay(date)) {
-            christmasDiscount += 1000 + 100 * (date - 1);
+            christmasDiscount = 1000 + 100 * (date - 1);
         }
         return christmasDiscount;
     }
@@ -74,14 +74,43 @@ public class Event {
         return giftPrice;
     }
 
+    // 모든 이벤트 실행
+    public void allEvent(int date, Map<String, Integer> orderedMenu) {
+        christmasEvent(date);
+        weekdayEvent(date, orderedMenu);
+        weekendEvent(date, orderedMenu);
+        specialEvent(date);
+        giftEvent();
+    }
+
     // 총혜택 금액
     public int getTotalDiscount() {
-        discountMoney = weekdayDiscount + weekendDiscount + specialDiscount + christmasDiscount;
+        discountMoney = christmasDiscount + weekdayDiscount + weekendDiscount + specialDiscount;
         return (discountMoney + giftPrice);
     }
 
     // 총할인 금액
     public static int getDiscount() {
         return discountMoney;
+    }
+
+    public int getWeekendDiscount() {
+        return weekendDiscount;
+    }
+
+    public int getWeekdayDiscount() {
+        return weekdayDiscount;
+    }
+
+    public int getSpecialDiscount() {
+        return specialDiscount;
+    }
+
+    public int getChristmasDiscount() {
+        return christmasDiscount;
+    }
+
+    public int getGiftPrice() {
+        return giftPrice;
     }
 }
