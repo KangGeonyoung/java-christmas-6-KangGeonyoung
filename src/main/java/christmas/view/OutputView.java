@@ -85,4 +85,11 @@ public class OutputView {
             System.out.println("없음");
         }
     }
+
+    // 총혜택 금액
+    public static void printTotalDiscount(Event event) {
+        System.out.println();
+        System.out.println("<총혜택 금액>");
+        System.out.println(event.getTotalDiscount() * (-1) + "원");
+    }
 }
