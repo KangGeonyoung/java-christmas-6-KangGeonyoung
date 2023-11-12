@@ -23,4 +23,10 @@ public class OutputView {
         });
     }
 
+    public static void printTotalPrice(int totalPrice) {
+        System.out.println();
+        System.out.println("<할인 전 총주문 금액>");
+        System.out.println(totalPrice + "원");
+    }
+
 }
