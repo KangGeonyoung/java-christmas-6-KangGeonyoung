@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Event {
 
+    private static int totalDiscount;
     private static int discountMoney;
     private int weekendDiscount;
     private int weekdayDiscount;
@@ -16,6 +17,7 @@ public class Event {
     private int giftPrice;
 
     public Event() {
+        this.totalDiscount = 0;
         this.discountMoney = 0;
         this.weekendDiscount = 0;
         this.weekdayDiscount = 0;
@@ -75,7 +77,7 @@ public class Event {
     }
 
     // 모든 이벤트 실행
-    public void allEvent(int date, Map<String, Integer> orderedMenu) {
+    public void executeAllEvent(int date, Map<String, Integer> orderedMenu) {
         christmasEvent(date);
         weekdayEvent(date, orderedMenu);
         weekendEvent(date, orderedMenu);
@@ -83,10 +85,16 @@ public class Event {
         giftEvent();
     }
 
+    // 총혜택 금액 계산
+    public int calculateTotalDiscount() {
+        discountMoney = christmasDiscount + weekdayDiscount + weekendDiscount + specialDiscount;
+        totalDiscount = discountMoney + giftPrice;
+        return totalDiscount;
+    }
+
     // 총혜택 금액
     public int getTotalDiscount() {
-        discountMoney = christmasDiscount + weekdayDiscount + weekendDiscount + specialDiscount;
-        return (discountMoney + giftPrice);
+        return totalDiscount;
     }
 
     // 총할인 금액
