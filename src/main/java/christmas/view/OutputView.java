@@ -1,7 +1,6 @@
 package christmas.view;
 
 import christmas.domain.model.Event;
-import christmas.domain.model.Price;
 
 import java.util.Map;
 
@@ -39,7 +38,7 @@ public class OutputView {
         System.out.println("없음");
     }
 
-    public static void printAllDiscount(Event event) {
+    public static void printDiscountInfo(Event event) {
         System.out.println();
         System.out.println("<혜택 내역>");
         printChristmasDiscount(event);
