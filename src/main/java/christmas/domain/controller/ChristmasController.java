@@ -24,6 +24,22 @@ public class ChristmasController {
         this.badgeSystem = new Badge();
     }
 
+    public void start() {
+        OutputView.printHello();
+        int date = inputDate();
+        Map<String, Integer> orderedMenu = inputMenu();
+        printUserInput(date, orderedMenu);
+        int totalPrice = printPriceInfo(orderedMenu);
+        printGiftInfo(totalPrice);
+        if (totalPrice >= 10000) {
+            executeEvent(date, orderedMenu);
+        }
+        OutputView.printDiscountInfo(eventSystem);
+        OutputView.printTotalDiscount(eventSystem);
+        OutputView.printPaymentPrice(priceSystem.getPaymentPrice());
+        OutputView.printBadge(badgeSystem.badgeEvent(eventSystem.getTotalDiscount()));
+    }
+
     private int inputDate() {
         try {
             int date = dateSystem.isValidDate(InputView.readDate());
