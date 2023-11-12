@@ -43,5 +43,10 @@ public class ChristmasController {
             return inputMenu();
         }
     }
-    
+
+    private void printUserInput(int date, Map<String, Integer> orderedMenu) {
+        OutputView.printDate(date);
+        OutputView.printMenu(orderedMenu);
+    }
+
 }
