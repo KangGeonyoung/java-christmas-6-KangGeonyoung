@@ -2,9 +2,12 @@ package christmas.view;
 
 import christmas.domain.model.Event;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 
 public class OutputView {
+
+    public static DecimalFormat decimalFormat = new DecimalFormat("###,###");
 
     public static void printHello() {
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");
@@ -25,7 +28,7 @@ public class OutputView {
     public static void printTotalPrice(int totalPrice) {
         System.out.println();
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(totalPrice + "원");
+        System.out.println(decimalFormat.format(totalPrice) + "원");
     }
 
     public static void printGiftCount(int giftCount) {
@@ -51,31 +54,31 @@ public class OutputView {
 
     public static void printChristmasDiscount(Event event) {
         if (event.getChristmasDiscount() > 0) {
-            System.out.println("크리스마스 디데이 할인: " + event.getChristmasDiscount() * (-1) + "원");
+            System.out.println("크리스마스 디데이 할인: " + decimalFormat.format(event.getChristmasDiscount() * (-1)) + "원");
         }
     }
 
     public static void printWeekdayDiscount(Event event) {
         if (event.getWeekdayDiscount() > 0) {
-            System.out.println("평일 할인: " + event.getWeekdayDiscount() * (-1) + "원");
+            System.out.println("평일 할인: " + decimalFormat.format(event.getWeekdayDiscount() * (-1)) + "원");
         }
     }
 
     public static void printWeekendDiscount(Event event) {
         if (event.getWeekendDiscount() > 0) {
-            System.out.println("주말 할인: " + event.getWeekendDiscount() * (-1) + "원");
+            System.out.println("주말 할인: " + decimalFormat.format(event.getWeekendDiscount() * (-1)) + "원");
         }
     }
 
     public static void printSpecialDiscount(Event event) {
         if (event.getSpecialDiscount() > 0) {
-            System.out.println("특별 할인: " + event.getSpecialDiscount() * (-1) + "원");
+            System.out.println("특별 할인: " + decimalFormat.format(event.getSpecialDiscount() * (-1)) + "원");
         }
     }
 
     public static void printGiftDiscount(Event event) {
         if (event.getGiftPrice() > 0) {
-            System.out.println("증정 이벤트: " + event.getGiftPrice() * (-1) + "원");
+            System.out.println("증정 이벤트: " + decimalFormat.format(event.getGiftPrice() * (-1)) + "원");
         }
     }
 
@@ -89,13 +92,13 @@ public class OutputView {
     public static void printTotalDiscount(Event event) {
         System.out.println();
         System.out.println("<총혜택 금액>");
-        System.out.println(event.getTotalDiscount() * (-1) + "원");
+        System.out.println(decimalFormat.format(event.getTotalDiscount() * (-1)) + "원");
     }
 
     public static void printPaymentPrice(int paymentPrice) {
         System.out.println();
         System.out.println("<할인 후 예상 결제 금액>");
-        System.out.println(paymentPrice + "원");
+        System.out.println(decimalFormat.format(paymentPrice) + "원");
     }
 
     public static void printBadge(String badge) {
