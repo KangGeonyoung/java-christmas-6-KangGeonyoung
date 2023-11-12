@@ -59,4 +59,9 @@ public class ChristmasController {
         giftSystem.provideGift(totalPrice);
         OutputView.printGiftCount(giftSystem.getGiftCount());
     }
+
+    private void executeEvent(int date, Map<String, Integer> orderedMenu) {
+        eventSystem.executeAllEvent(date, orderedMenu);
+        eventSystem.calculateTotalDiscount();
+    }
 }
