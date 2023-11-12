@@ -98,4 +98,10 @@ public class OutputView {
         System.out.println("<할인 후 예상 결제 금액>");
         System.out.println(paymentPrice + "원");
     }
+
+    public static void printBadge(String badge) {
+        System.out.println();
+        System.out.println("<12월 이벤트 배지>");
+        System.out.println(badge);
+    }
 }
