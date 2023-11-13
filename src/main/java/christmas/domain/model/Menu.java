@@ -1,6 +1,7 @@
 package christmas.domain.model;
 
 import christmas.domain.util.ErrorMessage;
+import christmas.domain.util.InputValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,10 @@ public class Menu {
 
     public Map<String, Integer> isValidMenu(String input) {
         try {
+            InputValidator.isNull(input);
+            InputValidator.isEmptyOrBlank(input);
             Map<String, Integer> orderedMenu = convertOrderedMenu(input);
-            isEmptyMenu(orderedMenu);
-            isWithinMenu(orderedMenu);
-            isValidMenuCount(orderedMenu);
-            isOnlyBeverage(orderedMenu);
+            executeMenuValidator(orderedMenu);
             return orderedMenu;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MENU.getErrorMessage());
@@ -33,6 +33,13 @@ public class Menu {
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MENU.getErrorMessage());
         }
+    }
+
+    private void executeMenuValidator(Map<String, Integer> orderedMenu) {
+        isEmptyMenu(orderedMenu);
+        isWithinMenu(orderedMenu);
+        isValidMenuCount(orderedMenu);
+        isOnlyBeverage(orderedMenu);
     }
 
     private static Map<String, Integer> convertOrderedMenu(String input) {
