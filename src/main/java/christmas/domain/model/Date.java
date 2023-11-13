@@ -1,6 +1,7 @@
 package christmas.domain.model;
 
 import christmas.domain.util.ErrorMessage;
+import christmas.domain.util.InputValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,8 @@ public class Date {
     // 방문 날짜 유효성 검사
     public int isValidDate(String input) {
         try {
+            InputValidator.isNull(input);
+            InputValidator.isEmptyOrBlank(input);
             int date = Integer.parseInt(input);
             isValidRange(date);
             return date;
