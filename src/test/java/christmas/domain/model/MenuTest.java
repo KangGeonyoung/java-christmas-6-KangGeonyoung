@@ -17,4 +17,28 @@ class MenuTest {
         Map<String, Integer> orderedMenu = menuSystem.convertOrderedMenu(input);
         Assertions.assertThat(orderedMenu.size()).isEqualTo(2);
     }
+
+    @Test
+    void 메뉴_입력값_잘못된형식_1() {
+        String input = "타파스+1,제로콜라-1";
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map<String, Integer> orderedMenu = menuSystem.isValidMenu(input);
+        });
+    }
+
+    @Test
+    void 메뉴_입력값_잘못된형식_2() {
+        String input = "타파스-1+제로콜라-1";
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map<String, Integer> orderedMenu = menuSystem.isValidMenu(input);
+        });
+    }
+
+    @Test
+    void 메뉴_입력값_잘못된형식_3() {
+        String input = "타파스=1,제로콜라=1";
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map<String, Integer> orderedMenu = menuSystem.isValidMenu(input);
+        });
+    }
 }
