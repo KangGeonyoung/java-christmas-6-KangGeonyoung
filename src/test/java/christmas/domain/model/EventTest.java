@@ -2,13 +2,12 @@ package christmas.domain.model;
 
 import christmas.domain.util.DiscountPrice;
 import christmas.domain.util.MenuPrice;
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class EventTest {
 
@@ -75,5 +74,13 @@ class EventTest {
         int date = 13;
         int discountMoney = eventSystem.specialEvent(date);
         assertThat(discountMoney).isEqualTo(0);
+    }
+
+    @Test
+    void 증정이벤트_해당할경우() {
+        int totalPrice = 120000;
+        boolean resultGift = giftSystem.provideGift(totalPrice);
+        int discountMoney = eventSystem.giftEvent();
+        assertThat(discountMoney).isEqualTo(MenuPrice.샴페인.getPrice());
     }
 }
