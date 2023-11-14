@@ -41,4 +41,31 @@ class DateTest {
         });
     }
 
+    @Test
+    void 방문날짜_크리스마스_할인_날짜_확인() {
+        int date = 25;
+        boolean result = dateSystem.isChristmasDay(date);
+        Assertions.assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 방문날짜_주말_확인() {
+        int date = 30;
+        boolean result = dateSystem.isWeekend(date);
+        Assertions.assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 방문날짜_평일_확인() {
+        int date = 31;
+        boolean result = dateSystem.isWeekend(date);
+        Assertions.assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    void 방문날짜_별있는_날짜_확인() {
+        int date = 10;
+        boolean result = dateSystem.isSpecialDay(date);
+        Assertions.assertThat(result).isEqualTo(true);
+    }
 }
