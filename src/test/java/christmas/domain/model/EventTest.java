@@ -62,4 +62,18 @@ class EventTest {
         int discountMoney = eventSystem.weekendEvent(date, orderedMenu);
         assertThat(discountMoney).isEqualTo(0);
     }
+
+    @Test
+    void 특별할인_별_존재하는날() {
+        int date = 17;
+        int discountMoney = eventSystem.specialEvent(date);
+        assertThat(discountMoney).isEqualTo(DiscountPrice.SPECIAL_DAY.getDiscountMoney());
+    }
+
+    @Test
+    void 특별할인_별_없는날() {
+        int date = 13;
+        int discountMoney = eventSystem.specialEvent(date);
+        assertThat(discountMoney).isEqualTo(0);
+    }
 }
