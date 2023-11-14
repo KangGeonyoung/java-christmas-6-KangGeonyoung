@@ -16,8 +16,10 @@ public class Event {
     private int specialDiscount;
     private int christmasDiscount;
     private int giftPrice;
+    private Date dateSystem;
 
     public Event() {
+        this.dateSystem = new Date();
         this.totalDiscount = 0;
         this.discountMoney = 0;
         this.weekendDiscount = 0;
@@ -29,7 +31,7 @@ public class Event {
 
     // 크리스마스 디데이 할인
     public int christmasEvent(int date) {
-        if (Date.isChristmasDay(date)) {
+        if (dateSystem.isChristmasDay(date)) {
             christmasDiscount = DiscountPrice.CHRISTMAS_D_DAY.getDiscountMoney()
                     + DiscountPrice.CHRISTMAS_D_DAY_EXTRA.getDiscountMoney() * (date - 1);
         }
@@ -38,7 +40,7 @@ public class Event {
 
     // 평일 할인
     public int weekdayEvent(int date, Map<String, Integer> orderedMenu) {
-        if (!Date.isWeekend(date)) {
+        if (!dateSystem.isWeekend(date)) {
             List<String> dessertMenu = new ArrayList<>(List.of("초코케이크", "아이스크림"));
             orderedMenu.forEach((menu, count) -> {
                 if (dessertMenu.contains(menu)) {
@@ -51,7 +53,7 @@ public class Event {
 
     // 주말 할인
     public int weekendEvent(int date, Map<String, Integer> orderedMenu) {
-        if (Date.isWeekend(date)) {
+        if (dateSystem.isWeekend(date)) {
             List<String> mainMenu = new ArrayList<>(List.of("티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타"));
             orderedMenu.forEach((menu, count) -> {
                 if (mainMenu.contains(menu)) {
@@ -64,7 +66,7 @@ public class Event {
 
     // 특별 할인
     public int specialEvent(int date) {
-        if (Date.isSpecialDay(date)) {
+        if (dateSystem.isSpecialDay(date)) {
             specialDiscount += DiscountPrice.SPECIAL_DAY.getDiscountMoney();
         }
         return specialDiscount;
