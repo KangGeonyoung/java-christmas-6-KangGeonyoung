@@ -41,4 +41,31 @@ class MenuTest {
             Map<String, Integer> orderedMenu = menuSystem.isValidMenu(input);
         });
     }
+
+    @Test
+    void 메뉴_입력값_잘못된_메뉴개수_1() {
+        String input = "타파스-21";
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map<String, Integer> orderedMenu = menuSystem.convertOrderedMenu(input);
+            menuSystem.isValidMenuCount(orderedMenu);
+        });
+    }
+
+    @Test
+    void 메뉴_입력값_잘못된_메뉴개수_2() {
+        String input = "타파스-15,티본스테이크-6";
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map<String, Integer> orderedMenu = menuSystem.convertOrderedMenu(input);
+            menuSystem.isValidMenuCount(orderedMenu);
+        });
+    }
+
+    @Test
+    void 메뉴_입력값_잘못된_메뉴개수_3() {
+        String input = "타파스-15,티본스테이크-0";
+        assertThrows(IllegalArgumentException.class, () -> {
+            Map<String, Integer> orderedMenu = menuSystem.convertOrderedMenu(input);
+            menuSystem.isValidMenuCount(orderedMenu);
+        });
+    }
 }
