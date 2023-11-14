@@ -42,7 +42,7 @@ public class Menu {
         isOnlyBeverage(orderedMenu);
     }
 
-    private static Map<String, Integer> convertOrderedMenu(String input) {
+    public Map<String, Integer> convertOrderedMenu(String input) {
         Map<String, Integer> orderedMenu = Pattern.compile(",")
                 .splitAsStream(input.trim())
                 .map(i -> i.split("-", 2))
@@ -56,7 +56,7 @@ public class Menu {
         }
     }
 
-    private static void isValidMenuCount(Map<String, Integer> orderedMenu) {
+    public void isValidMenuCount(Map<String, Integer> orderedMenu) {
         menuTotalCount = 0;
         orderedMenu.forEach((menu, count) -> {
             if (count < 1) {
@@ -69,7 +69,7 @@ public class Menu {
         });
     }
 
-    private static void isWithinMenu(Map<String, Integer> orderedMenu) {
+    public void isWithinMenu(Map<String, Integer> orderedMenu) {
         orderedMenu.forEach((menu, count) -> {
             if (!saleMenu.contains(menu)) {
                 throw new IllegalArgumentException(ErrorMessage.INVALID_MENU.getErrorMessage());
@@ -77,7 +77,7 @@ public class Menu {
         });
     }
 
-    private static void isOnlyBeverage(Map<String, Integer> orderedMenu) {
+    public void isOnlyBeverage(Map<String, Integer> orderedMenu) {
         List<String> beverageMenu = new ArrayList<>(List.of("제로콜라", "레드와인", "샴페인"));
         beverageCount = 0;
         orderedMenu.forEach((menu, count) -> {
