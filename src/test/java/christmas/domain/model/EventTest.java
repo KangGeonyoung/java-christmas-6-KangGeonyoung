@@ -23,4 +23,23 @@ class EventTest {
         assertThat(discountMoney).isEqualTo(3400);
     }
 
+    @Test
+    void 평일할인_메인메뉴_주문할경우() {
+        int date = 3;
+        String input = "타파스-15,티본스테이크-3";
+
+        Map<String, Integer> orderedMenu = menuSystem.convertOrderedMenu(input);
+        int discountMoney = eventSystem.weekdayEvent(date, orderedMenu);
+        assertThat(discountMoney).isEqualTo(0);
+    }
+
+    @Test
+    void 평일할인_디저트메뉴_주문할경우() {
+        int date = 3;
+        String input = "초코케이크-2";
+
+        Map<String, Integer> orderedMenu = menuSystem.convertOrderedMenu(input);
+        int discountMoney = eventSystem.weekdayEvent(date, orderedMenu);
+        assertThat(discountMoney).isEqualTo(DiscountPrice.WEEKDAY.getDiscountMoney() * 2);
+    }
 }
