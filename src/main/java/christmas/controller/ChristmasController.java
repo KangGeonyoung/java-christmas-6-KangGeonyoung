@@ -1,4 +1,4 @@
-package christmas.domain.controller;
+package christmas.controller;
 
 import christmas.domain.model.*;
 import christmas.view.InputView;
